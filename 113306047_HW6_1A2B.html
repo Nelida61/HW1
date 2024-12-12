@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>113306047_HW6_1A2B</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>StudentID_HW6_1A2B</h1>
+    <p>Enter your 4-digit guess:</p>
+    <input type="text" id="guessInput" maxlength="4">
+    <button onclick="submitGuess()">Submit</button>
+    <div id="result"></div>
+    <script>
+    function generateAnswer() {
+        const digits = Array.from({ length: 10 }, (_, i) => i);
+        const answer = [];
+        while (answer.length < 4) {
+            const randomIndex = Math.floor(Math.random() * digits.length);
+            answer.push(digits.splice(randomIndex, 1)[0]);
+        }
+        return answer;
+    }
+
+    const answer = generateAnswer();
+    let attempts = 0; 
+
+    function isValidInput(input) {
+        if (input.length !== 4 || isNaN(input)) {
+            alert("Please enter exactly 4 digits!");
+            return false;
+        }
+
+        const digits = input.split('');
+        const uniqueDigits = new Set(digits);
+
+        if (uniqueDigits.size !== 4) {
+            alert("Digits must not be repeated!");
+            return false;
+        }
+
+        return true;
+    }
+
+    function calculateResult(input) {
+        const inputArray = input.split('').map(Number);
+        let A = 0, B = 0;
+
+        inputArray.forEach((digit, index) => {
+            if (digit === answer[index]) {
+                A++;
+            } else if (answer.includes(digit)) {
+                B++;
+            }
+        });
+
+        return `${A}A${B}B`;
+    }
+
+    function submitGuess() {
+        const inputField = document.getElementById("guessInput");
+        const guess = inputField.value.trim();
+        inputField.value = ""; // Clear input field
+
+        if (!isValidInput(guess)) {
+            return;
+        }
+
+        attempts++;
+        const result = calculateResult(guess);
+
+        const resultDiv = document.getElementById("result");
+        const newEntry = document.createElement("p");
+        newEntry.textContent = `Attempt ${attempts}: ${guess} => ${result}`;
+        resultDiv.appendChild(newEntry);
+
+        if (result === "4A0B") {
+            alert(`Congratulations! You've guessed the correct answer in ${attempts} attempts.`);
+            location.reload(); 
+        }
+    }
+    
+    </script>
+</body>
+<script src="script.js"></script>
+</html>
