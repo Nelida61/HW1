@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-section {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.input-section label, .input-section input, .input-section button {
+    margin: 5px;
+}
+
+#grades-table {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+#grades-table th, #grades-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+#grades-table tfoot td {
+    font-weight: bold;
+    background-color: #d3d3d3;
+}

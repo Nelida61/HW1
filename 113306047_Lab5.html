@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Grade Table</title>
+    <link rel="stylesheet" href="Lan5.css">
+</head>
+<body>
+    <h1>Grade Submission Form</h1>
+    <div class="input-section">
+        <label for="math-grade">Math Grade: </label>
+        <input type="number" id="math-grade" min="0" max="100" required>
+        <label for="english-grade">English Grade: </label>
+        <input type="number" id="english-grade" min="0" max="100" required>
+        <button id="submit-button">Submit</button>
+    </div>
+
+    <table id="grades-table">
+        <thead>
+            <tr>
+                <th>Math</th>
+                <th>English</th>
+                <th>Average</th>
+            </tr>
+        </thead>
+        <tbody id="grades-body">
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td id="math-average">0</td>
+                <td id="english-average">0</td>
+                <td id="overall-average">0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="Lab5.js"></script>
+</body>
+</html>
